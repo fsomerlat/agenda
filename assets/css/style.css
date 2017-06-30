@@ -1,0 +1,123 @@
+.pagAdmin {
+
+	background-color:#FFEFD5;
+}
+
+body{
+	
+	background-color:#FFFFF0;
+}
+
+.login,
+.titleTableUsers,
+.titleEmail,
+.msgServico,
+.tableServico,
+.laodTableClientes,
+.tableProfissional,
+.tableAgenda,
+.tableAPainelgendamento
+ {
+
+	text-align: center;
+}
+
+.rolagem
+{
+	 overflow: auto; auto;
+	 height: 330px;   /* QUANTO CHEGAR AO TAMANHO 200PX,APARECE A BARRA DE ROLAGEM VERTICAL*/
+	 text-align:center;
+	 font-family:arial; 
+	 font-size:13px;  
+	 line-height:100%;
+	 width:100%;
+	 /*box-shadow:0px 1px 1px 1px black;/*#fff*/
+}
+
+.rolagem_2
+{
+	 overflow: auto; auto;
+	 height: 170px;   /* QUANTO CHEGAR AO TAMANHO 200PX,APARECE A BARRA DE ROLAGEM VERTICAL*/
+	 text-align:center;
+	 font-family:arial; 
+	 font-size:13px;  
+	 line-height:100%;
+	 width:100%;
+	 /*box-shadow:0px 1px 1px 1px black;/*#fff*/
+}
+.isCadastraUsers {
+
+	margin-top:23px;
+}
+
+.msgFormUsers {
+
+	font-size:18px;
+}
+
+.msgErrorsLogin,
+.msgEmail {
+
+	text-align:center;
+	font-size: 18px;
+}
+
+.accessoNegado
+ {
+
+	margin-top: 200px;
+	text-align: center;
+}
+
+
+.userBloqueado {
+
+	text-align: center;
+	margin-top: 20px;
+}
+.isAcessoNegado {
+
+	color:red;
+}
+
+.isLogin {
+
+	margin-top: 90px;
+}
+
+.cadastrarServico{
+
+	margin-top: 20px;
+}
+
+.table {
+	
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 5px;	
+}
+
+.table > thead > tr > th ,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td{
+
+  padding: 2px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+  font-size: 15px;
+}
+
+.divMsgAgenda {
+	
+	margin-top: -10px;
+}
+
+.menuInferior {
+	
+	margin-top: -25px;
+}
+
