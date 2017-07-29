@@ -90,7 +90,7 @@ class CI_Cache_memcached extends CI_Driver {
 
 		if (class_exists('Memcached', FALSE))
 		{
-			$this->_memcached = new Memcached();
+			$this->_memcached = new Memcache();
 		}
 		elseif (class_exists('Memcache', FALSE))
 		{
@@ -118,7 +118,7 @@ class CI_Cache_memcached extends CI_Driver {
 					$cache_server['weight']
 				);
 			}
-			elseif ($this->_memcached instanceof Memcached)
+			elseif ($this->_memcached instanceof Memcache)
 			{
 				$this->_memcached->addServer(
 					$cache_server['hostname'],
@@ -162,7 +162,7 @@ class CI_Cache_memcached extends CI_Driver {
 			$data = array($data, time(), $ttl);
 		}
 
-		if ($this->_memcached instanceof Memcached)
+		if ($this->_memcached instanceof Memcache)
 		{
 			return $this->_memcached->set($id, $data, $ttl);
 		}
@@ -295,7 +295,7 @@ class CI_Cache_memcached extends CI_Driver {
 		{
 			$this->_memcached->close();
 		}
-		elseif ($this->_memcached instanceof Memcached && method_exists($this->_memcached, 'quit'))
+		elseif ($this->_memcached instanceof MemcachePool && method_exists($this->_memcached, 'quit'))
 		{
 			$this->_memcached->quit();
 		}

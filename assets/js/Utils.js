@@ -1,6 +1,10 @@
 var Utils =  (function() {
 
-
+	var getBaseUrl = function() {
+		
+		return $('.baseUrl').val();
+	}
+	
 	var getItensUrl = function() {
 
 		var url = window.location.search.replace("?", ""),
@@ -9,7 +13,6 @@ var Utils =  (function() {
 		var getItens = {
 
 				'a' : itens[0],
-		
 		}
 
 		return getItens.a.substring(6,7);
@@ -42,7 +45,8 @@ var Utils =  (function() {
 
 	return {
 
-		bindEvents: bindEvents
+		bindEvents: bindEvents,
+		getBaseUrl: getBaseUrl
 	}
 
 })();

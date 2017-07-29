@@ -105,8 +105,8 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 	 */
 	public function open($save_path, $name)
 	{
-		$this->_memcached = new Memcached();
-		$this->_memcached->setOption(Memcached::OPT_BINARY_PROTOCOL, TRUE); // required for touch() usage
+		$this->_memcached = new Memcache();
+		$this->_memcached->setOption(Memcache::OPT_BINARY_PROTOCOL, TRUE); // required for touch() usage
 		$server_list = array();
 		foreach ($this->_memcached->getServerList() as $server)
 		{
@@ -217,11 +217,11 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 		}
 		elseif (
 			$this->_memcached->touch($key, $this->_config['expiration'])
-			OR ($this->_memcached->getResultCode() === Memcached::RES_NOTFOUND && $this->_memcached->set($key, $session_data, $this->_config['expiration']))
+			OR ($this->_memcached->getResultCode() === Memcache::RES_NOTFOUND && $this->_memcached->set($key, $session_data, $this->_config['expiration']))
 		)
 		{
 			return $this->_success;
-		}
+		}// http://www.gecsistemas.hol.es
 
 		return $this->_fail();
 	}
@@ -309,7 +309,7 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 		{
 			if ( ! $this->_memcached->replace($this->_lock_key, time(), 300))
 			{
-				return ($this->_memcached->getResultCode() === Memcached::RES_NOTFOUND)
+				return ($this->_memcached->getResultCode() === Memcache::RES_NOTFOUND)
 					? $this->_memcached->set($this->_lock_key, time(), 300)
 					: FALSE;
 			}
@@ -360,7 +360,7 @@ class CI_Session_memcached_driver extends CI_Session_driver implements SessionHa
 	{
 		if (isset($this->_memcached, $this->_lock_key) && $this->_lock)
 		{
-			if ( ! $this->_memcached->delete($this->_lock_key) && $this->_memcached->getResultCode() !== Memcached::RES_NOTFOUND)
+			if ( ! $this->_memcached->delete($this->_lock_key) && $this->_memcached->getResultCode() !== Memcache::RES_NOTFOUND)
 			{
 				log_message('error', 'Session: Error while trying to free lock for '.$this->_lock_key);
 				return FALSE;
