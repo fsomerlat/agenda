@@ -18,9 +18,27 @@
 			parent:: __construct();
 
 			$this->table = $table;
-			
 		}
-
+            
+		public function verificaUsuario ($nomeUsuario) {
+		
+		    $sql="SELECT 
+                    cpNome
+                 FROM
+                    $this->table
+                 WHERE 
+                    cpNome = '$nomeUsuario'";
+		    
+            if(!empty($this->db->query($sql)->num_rows())) {
+                
+                return true;
+            
+            } else {
+                
+                return false;    
+            }     
+		}
+		
 		public function getJSON() {
 
 

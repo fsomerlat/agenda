@@ -31,7 +31,69 @@ var Utils =  (function() {
 
 		return new Date();
 	}
+	
+	var tooltip = function() {
+		
+		$(function() {
+		    $(document).tooltip({
+		      position: {
+		        my: "center bottom-20",
+		        at: "center top",
+		        using: function( position, feedback ) {
+		          $( this ).css( position );
+		          $( "<div>" )
+		            .addClass( "arrow" )
+		            .addClass( feedback.vertical )
+		            .addClass( feedback.horizontal )
+		            .appendTo( this );
+		        }
+		      }
+		    });
+		});		
+	}
+	var caixaDialog = function(idFocus, mensagem) {
+		
+	  $(function(ev) {
+	    $("#dialog-message").dialog({
+		  modal: true,
+		  hide: { effect: "shake", duration: 400},
+		    buttons: {
 
+		     Ok: function() {         
+		    		
+		    	$(ev.target).closest('input,select').find('#' + idFocus).focus();
+	          	$(this).dialog( "close" ); 
+		    
+		     }
+		  	
+		    }
+		 });	  
+	  });
+
+	  $('.mensagem').html(mensagem);
+	}
+
+	var verificaRG = function(url,idCampoRg) {
+		
+		$('#' + idCampoRg).bind('keyup', function() {
+			
+			var idCampo = $(this).attr('id'),
+				valorCampo = $(this).mask(''),
+				tamanhoCampoRg = valorCampo.length == 8;
+			
+			if(tamanhoCampoRg) {
+				
+				$.post(url, {rg: valorCampo}, function(retorno) {
+					
+					if(retorno == true) {
+
+						Utils.caixaDialog('','O RG INFORMADO JÁ EXISTE EM NOSSA BASE DE DADOS !');
+					}
+				})				
+			}			
+		})
+	}
+	
 	var expandePainel = function(idPainel) {
 
 		$("#panel_" + idPainel).collapse();
@@ -40,13 +102,15 @@ var Utils =  (function() {
 	var bindEvents = function() {
 
 		$(".dataAtual").html(newDataAtual(getData()));
-		expandePainel(getItensUrl());
+		tooltip();
 	}
 
 	return {
 
 		bindEvents: bindEvents,
-		getBaseUrl: getBaseUrl
+		caixaDialog: caixaDialog,
+		getBaseUrl: getBaseUrl,
+		verificaRG: verificaRG
 	}
 
 })();

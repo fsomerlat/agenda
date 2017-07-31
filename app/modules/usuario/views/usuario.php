@@ -1,31 +1,35 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
+<?php defined('BASEPATH') OR exit('O acesso via url nõa é permitido !'); ?>
 <div class="col-md-6">
 	<div class="panel-group" id="panel-36020">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				 <div class="panel-title" data-toggle="collapse" data-parent="#panel-36020" href="#panel_1">Cadastra usuário</div>
 			</div>
-			<div id="panel_1" class="panel-collapse collapse">
+			<div id="panel_1" class="panel-collapse collapse in">
 				<div class="panel-body">
-    				<form action="<?php echo base_url('usuario?panel=1'); ?>" id="formUsuario" method="POST">
+    				<form action="<?php echo base_url('usuario'); ?>" id="formUsuario" method="POST">
     					<div class="col-md-2">
     						<div class="form-group">
     							<label for="Nome">Nome</label>
-    							<input type="text" name="cpNome" id="cpNome" value="<?php echo (isset($nome)) ? $nome: set_value("cpNome"); ?>" class="form-control" autofocus="autofocus" />
+    							<input type="text" name="cpNome" id="cpNome" value="<?php echo (isset($nome)) ? $nome: set_value("cpNome"); ?>" class="form-control" />
     						</div>
     					</div>
     					<div class="col-md-2">
     						<div class="form-group">
-    						<label for="Senha">Senha</label>
-    							<input type="password" name="cpSenha" id="cpSenha" class="form-control" />
+    						<label for="senha">Senha</label>
+    							<input type="password" name="cpSenha" id="cpSenha" class="form-control isSenha"  />
     						</div>
     					</div>
-    					<div class="col-md-3">
+    					<div class="col-md-1 isVizualizaSenha">
+    						<div class="form-group">
+    							<a href="#" class="vizualizarSenha" title="Clique e vizualize sua senha !"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+    						</div>
+    					</div>
+    					<div class="col-md-2">
     						<div class="form-group">
     						<label for="Status">Status</label> 
     							<select name="cpStatus" id="cpStatus" class="form-control">
-    								<option value="">Selecione <?php echo (isset($status)) ? " - ".$status : false ; ?></option>
+    								<option value=""><?php echo (isset($status)) ? " - ".$status : "Selecione" ; ?></option>
     								<option value="A">Ativo</option>
     								<option value="B">Bloqueado</option>
     							</select>

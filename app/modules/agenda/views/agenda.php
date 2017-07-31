@@ -1,14 +1,9 @@
-<?php 
-	defined("BASEPATH") OR exit ("O acesso via url não permitido ");
-	 echo form_open('agenda?panel=5');
+<?php defined("BASEPATH") OR exit ("O acesso via url não permitido ");
+if($msg = get_msg()) {
+    
+    echo $msg;
+}
 ?>
-	<?php 
-		
-		if($msg = get_msg()) {
-			
-			echo $msg;
-		}
-	?>	
 
 <div class="col-md-5">
 	<div class="panel-group" id="panel-528436">
@@ -16,7 +11,7 @@
 			<div class="panel-heading">
 				 <div class="panel-title" data-toggle="collapse" data-parent="#panel-528436" href="#panel_5">Agendar</div>
 			</div>
-			<div id="panel_5" class="panel-collapse collapse">
+			<div id="panel_5" class="panel-collapse collapse in">
 				<div class="panel-body">
 				
 				<form action="<?php echo base_url('agenda'); ?>" method="POST">

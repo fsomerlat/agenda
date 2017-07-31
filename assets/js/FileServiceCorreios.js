@@ -4,7 +4,8 @@ var FileServiceCorreios = (function() {
 	
 		$('#' + idCcep).bind('keyup', function() {
 			
-			var cep = $(this).val().replace(/\D/g,''),
+			var idCampo = $(this).attr('id'), 
+				cep = $(this).val().replace(/\D/g,''),
 				tamanhoCampoCep = cep.length == 8;
 			
 			if(cep !='') {
@@ -31,8 +32,9 @@ var FileServiceCorreios = (function() {
 							
 							if(tamanhoCampoCep) {
 								
-								window.alert("O cep informado não foi encontrado !");
-								$(".loading").val("");								
+								$('.loading').val('');	
+								Utils.caixaDialog(idCampo, 'O CEP INFORMADO NÃO FOI ENCONTRADO !');	
+								return false;
 							}
 						}
 					});
@@ -41,14 +43,14 @@ var FileServiceCorreios = (function() {
 						
 					if(tamanhoCampoCep) {
 						
-						window.alert("O cep informado não é válido !");
-						$(".loading").val("");						
+						Utils.caixaDialog(idCampo, 'O CEP INFORMADO NÃO É VÁLIDO !');
+						$('.loading').val('');						
 					}
 				}
 				
 			} else {
 				
-				$(".loading").val("");
+				$('.loading').val('');
 			}
 		});
 	}

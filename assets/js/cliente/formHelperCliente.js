@@ -1,8 +1,10 @@
 var FormHelperCliente = (function() {
 	
+	var baseUrl = $('.baseUrl').val();
+	
 	var toClear = function(className) {
 
-		$("." + className).val("");
+		$("." + className).val('');
 	}
 	
 	var orgaoExpedidor = function() { // ALGUNS ÓRGÃOS EXPEDIDOR DE RG
@@ -30,9 +32,12 @@ var FormHelperCliente = (function() {
 		$("#cpTelefone").mask("(99) 9999-9999");
 		$("#cpRgCliente").mask("99999-999");
 	}
+	
 	var bindEvents = function() {
 
 		FileServiceCorreios.loadServiceCorreios('cpCep','cpBairro','cpCidade','cpEstado','cpRua');		
+		Utils.verificaRG(baseUrl+'cliente/verificaRG','cpRgCliente');
+		
 		mascarasCampos();
 		orgaoExpedidor();
 		

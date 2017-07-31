@@ -14,6 +14,25 @@
  		$this->table = $table;
  		$this->idCliente = $idCliente;
  	}
+    
+ 	public function verificaRG($rg) {
+ 	    
+ 	    $sql="SELECT 
+                 cpRgCliente
+              FROM
+                $this->table
+              WHERE
+                cpRgCliente = $rg";
+ 	    
+        if(!empty($this->db->query($sql)->result())) {
+            
+            return true;
+        
+        } else {
+            
+            return false;    
+        }
+ 	}
  	
  	public function cadastraCliente($nome,$sobreNm,$rg,$orgaoEX,$tel,$email,$cep,$rua,$bairro,$cidade,$estado,$obs) {
  		

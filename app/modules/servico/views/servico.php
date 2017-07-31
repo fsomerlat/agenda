@@ -1,46 +1,40 @@
-<?php
-	defined("BASEPATH") OR exit ("Não é permitido o acesso via url !");
-
-	echo form_open('servico?panel=3&start=1');
-	?>	
-
+<?php defined("BASEPATH") OR exit ("Não é permitido o acesso via url !"); ?>	
 <div class="col-md-6">
 	<div class="panel-group" id="panel-765344">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				 <div class="panel-title" data-toggle="collapse" data-parent="#panel-765344" href="#panel_3">Cadastrar serviço</div>
 			</div>
-			<div id="panel_3" class="panel-collapse collapse">
+			<div id="panel_3" class="panel-collapse collapse in">
 				<div class="panel-body">
-					<div class="col-md-4">
-						<div class="form-group">
-						<label for="Nome Servico">Nome do servico</label>
-							<?php echo form_input("cpNomeServico", (isset($servico)) ?  $servico : set_value("cpNomeServico") ,array("class" => "form-control","autofocus" => "autofocus","id" => "cpNomeServico")); ?>
-						</div>				
-					</div>
-					<div class="col-md-4">
-						<div class="form-group">
-							<label for="valor servico">Valor serviço</label>
-							<?php echo form_input("cpValorServico", (isset($valorServico)) ? $valorServico : set_value("cpValorServico") ,array("class" => "form-control","id" => "cpValorServico")); ?>
-						</div>							
-					</div>
-					<div class="col-md-4 cadastrarServico">
-						<input type="hidden" name="id" value="<?php  echo (isset($id)) ? $id : ""; ?>" />
-						<?php echo form_submit("acao", (isset($_GET["acao"]) && $_GET["acao"] == "editar") ? "atualizar" : "cadastrar", array("class" => "form-control btn btn-info","id" => "btnCadastrarServico")); ?>					
-					</div>
+    				<form action="<?php echo base_url('servico');?>" method="POST">
+    					<div class="col-md-4">
+    						<div class="form-group">
+    						<label for="Nome Servico">Nome do servico</label>
+    							<?php echo form_input("cpNomeServico", (isset($servico)) ?  $servico : set_value("cpNomeServico") ,array("class" => "form-control","autofocus" => "autofocus","id" => "cpNomeServico")); ?>
+    						</div>				
+    					</div>
+    					<div class="col-md-4">
+    						<div class="form-group">
+    							<label for="valor servico">Valor serviço</label>
+    							<?php echo form_input("cpValorServico", (isset($valorServico)) ? $valorServico : set_value("cpValorServico") ,array("class" => "form-control","id" => "cpValorServico")); ?>
+    						</div>							
+    					</div>
+    					<div class="col-md-4 cadastrarServico">
+    						<input type="hidden" name="id" value="<?php  echo (isset($id)) ? $id : ""; ?>" />
+    						<input type="subnmit" name="acao" value="<?php echo (isset($_GET["acao"]) && $_GET["acao"] == "editar") ? "atualizar" : "cadastrar";?>" class="form-control btn btn-info" id="btnCadastrarServico" />			
+    					</div>				
+    				</form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<?php 
 		if($msg = get_msg()):
-				
-
+		
 			echo $msg;
 
 		endif;
-
-		echo form_close();
 	?>
 </div>
 

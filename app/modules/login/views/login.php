@@ -6,6 +6,7 @@
 	<meta charset="utf=8" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $caminho .'lib/css/bootstrap.css'; ?>"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $caminho .'lib/css/font-awesome.css'; ?>" /> 
 </head>
 <body>
 <div class="container-fluid">
@@ -29,11 +30,16 @@
         	<form action="<?php echo base_url('login');?>" method="POST" >
             	<div class="form-group">
             		<label for="Usuario">Usuário</label>
-            		<input type="text" name="cpNome" class="form-control" id="cpNome" autofocus="autofocus" />
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                      <input type="text" name="cpNome" class="form-control" id="cpNome" autofocus="autofocus" />
+                </div>	           		
             	</div>
             	<div class="form-group">
-            		<label for="Senha">Senha</label>
-            		<input type="password" name="cpSenha" class="form-control" id="cpSenha"/>	
+                   <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                      <input type="password" class="form-control" name="cpSenha" id="cpSenha" placeholder="Password">
+                </div>	
             	</div>
             	<div class="form-group">
             		<input type="submit" name="acao" class="btn btn-info form-control" value="entrar" id="btnLogin"/>

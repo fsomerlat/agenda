@@ -1,7 +1,4 @@
-<?php 
-	defined("BASEPATH") OR exit("O acesso via url não é permitido !");
-	echo form_open('profissional?panel=9&start=1');
-?>
+<?php  defined("BASEPATH") OR exit("O acesso via url não é permitido !"); ?>
 
 <div class="col-md-6">
 	<div class="panel-group" id="panel-765330">
@@ -9,9 +6,11 @@
 			<div class="panel-heading">
 				 <div class="panel-title" data-toggle="collapse" data-parent="#panel-765330" href="#panel_9">Cadastrar profissional</div>
 			</div>
-			<div id="panel_9" class="panel-collapse collapse">
+			<div id="panel_9" class="panel-collapse collapse in">
 				<div class="panel-body">
 				<?php  if($msg = get_msg()): echo $msg; endif; ?>
+				
+				<form action="<?php echo base_url('profissional');?>" method="POST">
 					<div class="col-md-3">
 						<div class="form-group">
 							<label for="Nome">Nome </label>
@@ -102,11 +101,11 @@
 					<div class="col-md-12">
 						<div class="form-group">
 						<input type="hidden" name="id" value="<?php echo (isset($id) ? $id : ""); ?>"/>
-						<?php 
-							echo form_submit("acao",(isset($_GET['id']) && $_GET['acao'] == 'editar') ? "atualizar" : "cadastrar",array("class"=>" form-control btn btn-info","id" => "btnCadastraProfissonal"));
-						?>					
+							<input type="submit" name="acao" value="<?php echo (!empty($id) && $_GET["acao"] == "editar") ? "atualizar" : "cadastrar";?>" class="form-control btn btn-info" id="btnCadastrarProfissional"/>					
 						</div>
-					</div>
+					</div>				
+				</form>
+				
 				</div>
 			</div>
 		</div>

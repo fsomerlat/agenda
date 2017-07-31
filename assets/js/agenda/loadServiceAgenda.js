@@ -4,16 +4,16 @@ var LoadServiceAgenda = (function(){
 	
 	var loadServiceClientesCadastrados = function(url) {
 		
-		var options = "";
+		var options = '';
 		
 		$.ajax({
 			
 			url: url,
 			cache: false,
-			dataType:"json",
+			dataType:'json',
 			beforeSend: function() {
 				
-				$(".tableAgenda").html("carregando agenda...");
+				$('.tableAgenda').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>carregando agenda...');
 			},
 			success: function(retorno) { 
 				
@@ -21,23 +21,23 @@ var LoadServiceAgenda = (function(){
 					
 					retorno.map(function(dados){
 						
-						options += "<tr>";
-						options += "<td>" + dados.idAgenda +"</td>";
-						options += "<td>" + dados.cpNomeCliente +"</td>";
-						options += "<td>" + dados.cpNomeProfissional +"</td>";
-						options += "<td>" + dados.cpNomeServico +"</td>";
-						options += "<td><a href='#' target='_blank'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span></a></td>";
-						options += "<td>R$ " + dados.cpValorServico +"</td>";
-						options += "<td>" + dados.cpDataAgendamento +"</td>";
-						options += "<td>" + dados.cpHoraAgendamento +"</td>";
-						options += "<td>" + dados.cpObservacaoAgenda +"</td>";
-						options += "<td><a href='"+baseUrl+"agenda?panel=5&TipoCli=CliCadastrado&acao=editar&id="+dados.idAgenda+"'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
-						options += "<td><a href='"+baseUrl+"agenda?panel=5&acao=excluir&id="+dados.idAgenda+"'><span class='glyphicon glyphicon-trash excluiAgendamento' aria-hidden='true'></span></a></td>";
-						options += "</tr>";
+						options += '<tr>';
+						options += '<td>' + dados.idAgenda +'</td>';
+						options += '<td>' + dados.cpNomeCliente +'</td>';
+						options += '<td>' + dados.cpNomeProfissional +'</td>';
+						options += '<td>' + dados.cpNomeServico +'</td>';
+						options += '<td><a href="#" target="_blank"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></td>';
+						options += '<td>R$ ' + dados.cpValorServico +'</td>';
+						options += '<td>' + dados.cpDataAgendamento +'</td>';
+						options += '<td>' + dados.cpHoraAgendamento +'</td>';
+						options += '<td>' + dados.cpObservacaoAgenda +'</td>';
+						options += '<td><a href="'+baseUrl+"agenda?panel=5&TipoCli=CliCadastrado&acao=editar&id="+dados.idAgenda+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
+						options += '<td><a href="'+baseUrl+"agenda?panel=5&acao=excluir&id="+dados.idAgenda+'"><span class="glyphicon glyphicon-trash excluiAgendamento" aria-hidden="true"></span></a></td>';
+						options += '</tr>';
 					});
 					
-					$("#tableAgenda tbody").html(options);
-					$(".tableAgenda").html("Meus Agendamentos");
+					$('#tableAgenda tbody').html(options);
+					$('.tableAgenda').html('Meus Agendamentos');
 					
 				},1200);
 			}
@@ -47,33 +47,33 @@ var LoadServiceAgenda = (function(){
 	
 	var loadServiceClientesNaoCadastrados = function(url) {
 		
-		var options = "";
+		var options = '';
 		
 		$.ajax({
 			
 			url: url,
 			cache: false,
-			dataType: "json",
+			dataType: 'json',
 			success: function(retorno) {
 				
 				setTimeout(function() {
 					
 					retorno.map(function(dados){
 						
-						if(dados.cpClienteNaoCadastrado != "NULL"){
+						if(dados.cpClienteNaoCadastrado != 'NULL'){
 						
-						options += "<tr>";
-						options += "<td>"+ dados.idAgenda+"</td>";
-						options += "<td>"+ dados.cpClienteNaoCadastrado+"</td>";
-						options += "<td>"+ dados.cpNomeProfissional+"</td>";
-						options += "<td>"+ dados.cpNomeServico+"</td>";
-						options += "<td><a href='#' target='_blank'><span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span></a></td>";
-						options += "<td>R$ "+ dados.cpValorServico +"</td>";
-						options += "<td>"+ dados.cpDataAgendamento+"</td>";
-						options += "<td>"+ dados.cpHoraAgendamento+"</td>";
-						options += "<td>"+ dados.cpObservacaoAgenda+"</td>";
-						options += "<td><a href='FormAgenda?panel=5&TipoCli=Ncadastrado&acao=editar&id="+dados.idAgenda+"'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
-						options += "<td><a href='FormAgenda?panel=5&acao=excluir&id="+dados.idAgenda+"'><span class='glyphicon glyphicon-trash excluiAgendamento' aria-hidden='true'></span></a></td>";
+						options += '<tr>';
+						options += '<td>'+ dados.idAgenda+'</td>';
+						options += '<td>'+ dados.cpClienteNaoCadastrado+'</td>';
+						options += '<td>'+ dados.cpNomeProfissional+'</td>';
+						options += '<td>'+ dados.cpNomeServico+'</td>';
+						options += '<td><a href="#" target="_blank"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></td>';
+						options += '<td>R$ '+ dados.cpValorServico +'</td>';
+						options += '<td>'+ dados.cpDataAgendamento+'</td>';
+						options += '<td>'+ dados.cpHoraAgendamento+'</td>';
+						options += '<td>'+ dados.cpObservacaoAgenda+'</td>';
+						options += '<td><a href="'+baseUrl+"FormAgenda?TipoCli=Ncadastrado&acao=editar&id="+dados.idAgenda+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
+						options += '<td><a href="'+baseUrl+"FormAgenda?acao=excluir&id="+dados.idAgenda+'"><span class="glyphicon glyphicon-trash excluiAgendamento" aria-hidden="true"></span></a></td>';
 
 						options += "</tr>";
 						}

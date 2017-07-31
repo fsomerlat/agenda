@@ -1,6 +1,7 @@
 <?php
       
-  if(!function_exists('nomeView')):
+  //SEPARA BLOCOS DE ARQUIVOS 'JS' PARA SEREM RETORNADOS DE ACORDO COM O NOME DA PÁGINA QUE SERÁ INFORMADA NA CONTROLLER COMO PARÂMETRO DESSA FUNÇÃO
+  if(!function_exists('carregaArquivos')):
             
     function carregaArquivos($nomeArquivo) {
         
@@ -38,9 +39,7 @@
                 
                 'assets/js/profissional/formHeperProfissional.js',
                 'assets/js/profissional/loadServiceProfissional.js'
-            ),
-            
-            
+            )
         );
         
         switch($nomeArquivo):
@@ -77,6 +76,7 @@
     
   endif;
   
+  //SERÁ CHAMANDA NA  CONTROLLER QUE SE REFERE OS ARQUIVOS - RECEBER COMO PARAMETRO O NOME DA PÁGINA ESPECÍFICA DE CADA ARQUIVO
   if(!function_exists('carregaJS')):
   
     function carregaJS($nomeArquivo) {

@@ -37,7 +37,7 @@
 
 			if($this->form_validation->run()  == FALSE):
 
-				if(isset($_GET["start"])):
+				if(isset($valor_campo["start"])):
 					set_msg("<div class='alert alert-danger'>".validation_errors()."</div>");
 				endif;
 			else:

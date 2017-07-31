@@ -13,7 +13,7 @@ var LoadServiceUsuario = (function() {
 			dataType: 'json',
 			beforeSend: function() {
 
-				$('.titleTableUsers').html('caregando lista de usuários...');
+				$('.titleTableUsers').html('<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>caregando lista de usuários...');
 			},
 
 			error: function() {
@@ -27,27 +27,27 @@ var LoadServiceUsuario = (function() {
 
 					retorno.map(function(dados) {
 
-						(dados.cpStatus == "A") ? status = "Ativo" : status = "Bloqueado";
+						(dados.cpStatus == 'A') ? status = 'Ativo' : status = 'Bloqueado';
 
-						option += "<tr>";
-						option += "<td>" + dados.idUsuario + "</td>";
-						option += "<td>" + dados.cpNome + "</td>";
-						option += "<td>" + status + "</td>";
+						option += '<tr>';
+						option += '<td>' + dados.idUsuario + '</td>';
+						option += '<td>' + dados.cpNome + '</td>';
+						option += '<td>' + status + '</td>';
 
 						switch(dados.cpNivelAcesso) {
 
-							case "A" :  option += "<td>Administrador</td>"; break;
-							case "C" :  option += "<td>Comum</td>"; break;
-							case "S" :  option += "<td>Super</td>"; break;
+							case 'A' :  option += '<td>Administrador</td>'; break;
+							case 'C' :  option += '<td>Comum</td>'; break;
+							case 'S' :  option += '<td>Super</td>'; break;
 						}
 			
-						option += "<td><a href='"+baseUrl+"usuario?panel=1&acao=editar&id="+dados.idUsuario+"'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a></td>";
-						option += "<td><a href='"+baseUrl+"usuario?acao=excluir&id="+dados.idUsuario+"' class='excluiUser'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a></td>";
-						option += "</tr>";
+						option += '<td><a href="'+baseUrl+"usuario?panel=1&acao=editar&id="+dados.idUsuario+'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>';
+						option += '<td><a href="'+baseUrl+"usuario?acao=excluir&id="+dados.idUsuario+'" class="excluiUser"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>';
+						option += '</tr>';
 					});
 
-					$("#tableListUsers tbody").html(option);
-					$(".titleTableUsers").html("Lista de usuários");
+					$('#tableListUsers tbody').html(option);
+					$('.titleTableUsers').html('Lista de usuários');
 
 				},1200);
 			}

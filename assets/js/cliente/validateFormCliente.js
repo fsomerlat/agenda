@@ -29,8 +29,8 @@ document.getElementById("btnCadastrarCliente").onclick = function() {
 				
 			return a + b + '\n';
 			
-		},'Por favor, \n\n');
+		},'Por favor \n\n');
 		
-		window.alert(msg); return false;
+		window.alert(msg);  return false;
 	}
 }

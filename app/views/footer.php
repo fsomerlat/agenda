@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="<?php echo $caminho .'lib/js/jquery-1.11.3.min.js'; ?>"></script>
 	<script type="text/javascript" src="<?php echo $caminho .'lib/js/bootstrap.js'; ?>"></script>
 	<script type="text/javascript" src="<?php echo $caminho .'lib/js/jquery-ui.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo $caminho .'lib/js/jquery_ui_1.12.1.js'?>"></script>
 	<script type="text/javascript" src="<?php echo $caminho .'lib/js/maskinput.js'; ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/Utils.js'); ?>"></script>
     	

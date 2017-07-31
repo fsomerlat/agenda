@@ -20,7 +20,14 @@
 		    $this->load->view('usuario', array( self::FormAcao() , 'js' => carregaJS('usuario')));
 		    $this->load->view('footer');
 		}
-
+    
+		public function verificaUsuario() {
+		
+		    if(!empty($_POST["nomeUsuario"])):
+		      echo $this->m_users->verificaUsuario($_POST["nomeUsuario"]);
+		    endif;
+		}
+		
 		public function service_usuario() {
 			
 			header("Content-Type: application/json");

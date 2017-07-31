@@ -45,7 +45,7 @@
 			
 			if($this->form_validation->run() ==  FALSE): // INICIO CADASTRA E ATUALIZA
 				
-				if(isset($_GET["start"])): 
+				if(isset($valor_campo["acao"])): 
 						
 					set_msg("<div class='alert alert-danger'>".validation_errors()."</div>");
 			

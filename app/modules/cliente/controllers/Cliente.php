@@ -20,6 +20,15 @@
 		    $this->load->view('footer');
 		}
 		
+		public function verificaRG() {
+
+		    if(isset($_POST['rg'])): 
+		     
+		      echo $this->m_cli->verificaRG($_POST['rg']);
+		    
+		    endif;
+		}
+		
 		public function service_cliente() {
 			
 		    echo $this->m_cli->loadJSON();
@@ -41,7 +50,7 @@
 			
 			if($this->form_validation->run() == FALSE):
 			
-				if(isset($_GET["start"])):
+				if(isset($valor_campo["acao"])):
 				
 					set_msg("<div class='alert alert-danger'>".validation_errors()."</div>");
 				
